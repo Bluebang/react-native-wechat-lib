@@ -5,11 +5,12 @@ import { sha1 } from 'js-sha1';
 import { DeviceEventEmitter, NativeEventEmitter, NativeModules, Platform } from 'react-native';
 
 let isAppRegistered = false;
-let { WeChat, WechatLib } = NativeModules;
+let WeChat = Platform.0s =='ios'? NativeModules.WechatLib : NativeModules.RcTwechat
+// let { WeChat, WechatLib } = NativeModules;
 
-if (WeChat == null) {
-  WeChat = WechatLib;
-}
+// if (WeChat == null) {
+//   WeChat = WechatLib;
+// }
 
 // Event emitter to dispatch request and response from WeChat.
 const emitter = new EventEmitter();
